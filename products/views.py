@@ -1,5 +1,3 @@
-from functools import partial
-
 from django.core.serializers import serialize
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
@@ -7,12 +5,18 @@ from rest_framework.response import Response
 from .models import Product
 from .serializers import ProductSerializer, ProductCreateUpdateSerializer
 from .services import ProductManagement
-
+from rest_framework.filters import SearchFilter, OrderingFilter
+from django_filters.rest_framework import DjangoFilterBackend
+from .filters import ProductFilter
 
 
 class ProductListView(generics.ListAPIView):
     queryset = Product.objects.select_related('owner', 'category').all()
     serializer_class = ProductSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_class = ProductFilter
+    search_fields = ['name', 'description', 'slug']
+    ordering_fields = ['price', 'stock', 'created']
 
 
 class ProductCreate(generics.CreateAPIView):
