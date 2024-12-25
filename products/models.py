@@ -1,6 +1,10 @@
 from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 
 class Category(models.Model):
@@ -24,6 +28,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='products', null=True)
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
     description = models.TextField(max_length=1000)
