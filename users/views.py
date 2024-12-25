@@ -27,7 +27,7 @@ class RegisterView(generics.CreateAPIView):
 
 
 
-class Profile(APIView):
+class ProfileView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
