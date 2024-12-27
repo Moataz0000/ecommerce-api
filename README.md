@@ -12,14 +12,6 @@ Key features:
 - Order Tracking
 - Admin Dashboard for order status updates
 
-## Table of Contents
-- [Technologies Used](#technologies-used)
-- [Features](#features)
-- [Installation Guide](#installation-guide)
-- [API Endpoints](#api-endpoints)
-- [Models](#models)
-- [How to Contribute](#how-to-contribute)
-- [License](#license)
 
 ## Technologies Used
 - Python 3.x
