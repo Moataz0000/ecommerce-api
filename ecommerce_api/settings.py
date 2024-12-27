@@ -35,8 +35,7 @@ INSTALLED_APPS = [
     'shipping',
     'inventory',
     'products',
-    'payment',
-    
+
     # 3party
     'rest_framework',
     'rest_framework_simplejwt',
