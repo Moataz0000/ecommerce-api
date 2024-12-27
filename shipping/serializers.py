@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import CartItem, Cart
 from products.models import Product
-
+from .models import ShippingAddress
 
 class CartItemSerializer(serializers.ModelSerializer):
     product = serializers.StringRelatedField()
@@ -25,3 +25,10 @@ class CartSerializer(serializers.ModelSerializer):
 
     def get_total_price(self, obj):
         return obj.total_price()
+
+
+
+class ShippingAddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShippingAddress
+        fields = ['address_line1', 'address_line2', 'city', 'state', 'postal_code', 'country', 'phone']

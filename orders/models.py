@@ -22,9 +22,8 @@ class Order(models.Model):
     status = models.CharField(max_length=15, choices=OrderStatus.choices, default=OrderStatus.PENDING)
     created = models.DateTimeField(auto_now_add=True)
 
-
     def __str__(self):
-        return f'Order {self.order_id} by {self.user.email}'
+        return f'Order #{self.order_id} by {self.user.email}'
 
     def save(self, *args, **kwargs):
         if not self.order_id:
